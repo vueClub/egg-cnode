@@ -127,8 +127,15 @@
       <% } %>
     </div>
     <div class='inner topic'>
-
-      <div class='topic_content'>
+      <div class='topic_content' data-toggle="modal" data-target="#wechat">
+        <!- 2018/04/06 ->
+        <div style="
+        padding: 10px;
+        border-left: 4px solid #099436;
+        background: #f6f6f6;
+        margin: 10px 0;">
+          粉丝福利  : 关注VUE中文社区公众号，回复视频领取粉丝福利
+      </div>
         <%- helper.markdown(topic.linkedContent) %>
       </div>
     </div>

@@ -265,7 +265,7 @@ class UserController extends Controller {
     const action = ctx.request.body.action;
     const loginname = ctx.params.name;
     const user = await service.user.getUserByLoginName(loginname);
-
+    console.log(user, action);
     if (action === 'set_block') {
       user.is_block = true;
       await user.save();

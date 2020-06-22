@@ -70,6 +70,7 @@
       <a class='brand' href='/'>
         <% if (config.site_logo) {%>
           <img src="<%- helper.staticFile(config.site_logo) %>" />
+          Vue.js
         <%} else {%>
           <%- config.name %>
         <%}%>
@@ -90,6 +91,8 @@
             </a>
         </li>
         <% } %>
+        <li><a href="#" class="goWechat" data-toggle="modal" data-target="#wechat">微信公众号</a></li>
+        <li><a href='http://doc.vue-js.com/'>VUE 2.0</a></li>
         <li><a href='/getstart'>新手入门</a></li>
         <li><a href='/api'>API</a></li>
         <li><a href='/about'>关于</a></li>
@@ -120,6 +123,21 @@
 </div>
 <div id='main'>
   <%- body %>
+  <div id="wechat" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-body">
+      <div class="wechatbox">
+        <img style="flex: 0 0 80px;
+        width: 120px;
+        height: 120px;" src="https://static.vue-js.com/FgNX5y__B9wBEDnFJtRWeEDd7Xjq" alt="wechat">
+        <p style="line-height: 15px">
+          还没有找到组织?<br><br>
+          公众号回复"1"极速找到组织 <br><br>
+          关注即可获取前端进阶视频一套 <br><br>
+          ＋ 全网最全前端电子书一套
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 <div id='backtotop'>回到顶部</div>
 <div id='footer'>
@@ -146,6 +164,12 @@
 
   ga('create', '<%-config.google_tracker_id%>', 'auto');
   ga('send', 'pageview');
+  window.addEventListener('error',function(e){
+    // 当前异常是由图片加载异常引起的
+    if( e.target.tagName.toUpperCase() === 'IMG' ){
+        e.target.src = 'https://static.vue-js.com/FlZzJMjV0UAi5-7hSvXW8Df54Ijt';
+    }
+  },true)
 </script>
 <% } %>
 

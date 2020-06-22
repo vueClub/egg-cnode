@@ -1,0 +1,36 @@
+<%
+  var ads = [
+    {
+      href: '/nav.html',
+      label: 'web navigation',
+      img_src: 'https://static.vue-js.com/FqGL2LQGrn9-xqTe1Msu2VHsiVsj',
+    },
+  ];
+
+%>
+<div class='new_panel'>
+</div>
+<div class='panel'>
+  <div class='inner ads'>
+
+    <% ads.forEach(function (adObj, idx) { %>
+      <% if (idx !== 0) { %>
+        <div class="sep5"></div>
+      <% } %>
+      <a href="<%-adObj.href%>" target="_blank" class="banner sponsor_outlink"
+    data-label="<%=adObj.label%>">
+        <img src="<%=adObj.img_src%>" style="width:100%;height:45px;">
+      </a>
+    <% }) %>
+  </div>
+</div>
+
+<script>
+  $(window).on('scroll', function(){
+    if($(window).scrollTop() > $('.new_panel').offset().top){
+      $('.new_panel').addClass('fixed-advs');
+    }else if($(window).scrollTop() < 254){
+      $('.new_panel').removeClass('fixed-advs');
+    }
+  })
+</script>

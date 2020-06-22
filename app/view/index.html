@@ -1,7 +1,16 @@
-<% include ./sidebar.html %>
 
+
+<% include ./sidebar.html %>
 <div id="content">
+    <nav class="crumbs" style="height: 80px;">
+    <ol style="list-style: none; display: flex; height: 80px; margin:0;">
+        <li class="crumb" style="flex:1;margin: 0 10px 10px; border-radius: 6px; overflow: hidden; box-shadow: 8px 7px 8px #b6b6b6;"><a target="_blank" style="display: inline-block;width: 100%;height:100%" href="https://vue-js.com/nav.html" ><img style="width: 100%; height: 100%" src="https://static.vue-js.com/FiExMO8YxjL18u0f73wVkPASeGh-" alt="前端开发"></a></li>
+        <li class="crumb" style="flex:1;margin: 0 0px 10px; border-radius: 6px; overflow: hidden; box-shadow: 8px 7px 8px #b6b6b6;"><a target="_blank"  style="display: inline-block;width: 100%;height:100%" href="https://vue-js.com/learn-vue"><img style="width: 100%; height: 100%" src="https://static.vue-js.com/FvWGozw07ztLL7gsiRDzifEyCTkM " alt="vue源码学习"></a></li>
+        <li class="crumb" style="flex:1;margin: 0 0px 10px 10px; border-radius: 6px; overflow: hidden; box-shadow: 8px 7px 8px #b6b6b6;"><a target="_blank" style="display: inline-block;width: 100%;height:100%" href="https://doc.vue-js.com"><img style="width: 100%; height: 100%" src="https://static.vue-js.com/FoxeSWXdIktwt2i6RNwHuf0dCRy6" alt="vue中文文档"></a></li>
+    </ol>
+    </nav>
   <div class="panel">
+
     <div class="header">
       <% [['all', '全部'], ['good', '精华']].concat(tabs).forEach(function (pair) {
         var value = pair[0];
@@ -10,13 +19,13 @@
           class="topic-tab <%= value === tab ? 'current-tab' : '' %>"><%= text %></a>
       <% }) %>
     </div>
-    <% if (typeof topics !== 'undefined' && topics.length > 0) { %>
+    <% if (typeof(topics) !== 'undefined' && topics.length > 0) { %>
     <div class="inner no-padding">
       <%- include('./topic/list.html', {
-        topics: topics,
-        pages: pages,
-        current_page: current_page,
-        base: '/'
+      topics: topics,
+      pages: pages,
+      current_page: current_page,
+      base: '/'
       }) %>
     </div>
     <% } else { %>

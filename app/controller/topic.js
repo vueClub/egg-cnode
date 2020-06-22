@@ -22,12 +22,12 @@ class TopicController extends Controller {
     const { ctx, service } = this;
     const topic_id = ctx.params.tid;
     const currentUser = ctx.user;
-
-    if (topic_id.length !== 24) {
-      ctx.status = 404;
-      ctx.message = '此话题不存在或已被删除。';
-      return;
-    }
+    console.log(topic_id, 99);
+    // if (topic_id.length !== 24) {
+    //   ctx.status = 404;
+    //   ctx.message = '此话题不存在或已被删除。';
+    //   return;
+    // }
 
     const [ topic, author, replies ] = await service.topic.getFullTopic(topic_id);
 

@@ -48,6 +48,7 @@ class TopicService extends Service {
   async getTopicsByQuery(query, opt) {
     query.deleted = false;
     const topics = await this.ctx.model.Topic.find(query, {}, opt).exec();
+    // console.log(query, opt, 88);
 
     if (topics.length === 0) {
       return [];
@@ -90,7 +91,7 @@ class TopicService extends Service {
    * @param {Function} callback 回调函数
    */
   async getFullTopic(id) {
-    const query = { _id: id, deleted: false };
+    const query = { _id: id };
     const topic = await this.ctx.model.Topic.findOne(query);
 
     if (!topic) {

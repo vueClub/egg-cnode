@@ -4,13 +4,14 @@ const path = require('path');
 module.exports = appInfo => {
   const config = {};
 
-  config.name = 'CNode技术社区';
+  config.name = 'VueClub';
 
-  config.description = 'CNode：Node.js专业中文社区';
+  config.description = 'Vue：Vue.js专业中文社区';
+  config.keywords = 'Vue.js中文社区, vue2, Vue3, vue2.0, vue2.0文档,vue, vue-router , vue-valider , nodejs';
 
-  config.site_logo = '/public/images/cnodejs_light.svg';
+  config.site_logo = '/public/images/vue.png';
 
-  config.site_icon = '/public/images/cnode_icon_32.png';
+  config.site_icon = '/public/images/vue.png';
 
   // debug 为 true 时，用于本地调试
   config.debug = true;
@@ -18,9 +19,9 @@ module.exports = appInfo => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1519887194138_3450';
 
-  config.host = 'http://cnodejs.org';
+  config.host = 'http://vue-js.com';
 
-  config.session_secret = 'node_club_secret'; // 务必修改
+  config.session_secret = 'vue_club_secret'; // 务必修改
 
   // add your config here
   config.middleware = [ 'locals', 'authUser', 'blockUser', 'errorPage', 'errorHandler' ];
@@ -55,13 +56,10 @@ module.exports = appInfo => {
 
   // 7牛的access信息，用于文件上传
   config.qn_access = {
-    accessKey: 'your access key',
-    secretKey: 'your secret key',
-    bucket: 'your bucket name',
-    origin: 'http://your qiniu domain',
-    // 如果vps在国外，请使用 http://up.qiniug.com/ ，这是七牛的国际节点
-    // 如果在国内，此项请留空
-    uploadURL: 'http://xxxxxxxx',
+    accessKey: 'K1EzvixYD2GbvvsiX3ko6g989GuVMUZkyrCdUl5o',
+    secretKey: 'ggoFiqnCsE_Un4XpKPRqYQJyke8_Yo6kApm2bcsh',
+    bucket: 'vueclub',
+    domain: 'https://static.vue-js.com',
   };
 
   // 文件上传配置
@@ -92,9 +90,10 @@ module.exports = appInfo => {
     'www.google-analytics.com',
   ];
 
-  config.auth_cookie_name = 'node_club';
+  config.auth_cookie_name = 'vue_club';
   config.admins = {
     ADMIN_USER: true,
+    ab8512: true,
   };
 
   config.siteFile = {
@@ -115,7 +114,7 @@ module.exports = appInfo => {
    * @see http://mongodb.github.io/node-mongodb-native/2.2/api/Db.html#createCollection
    */
   config.mongoose = {
-    url: process.env.EGG_MONGODB_URL || 'mongodb://127.0.0.1:27017/egg_cnode',
+    url: process.env.EGG_MONGODB_URL || 'mongodb://127.0.0.1:27017/vue_club_dev',
     options: {
       server: { poolSize: 20 },
       reconnectTries: 10,
@@ -139,10 +138,9 @@ module.exports = appInfo => {
     host: 'smtp.126.com',
     port: 25,
     auth: {
-      user: 'club@126.com',
-      pass: 'club',
+      user: 'vueclub@126.com',
+      pass: '123456qq',
     },
-    ignoreTLS: true,
   };
 
   config.alinode = {

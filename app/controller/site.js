@@ -42,6 +42,7 @@ class HomeController extends Controller {
     };
 
     const topics = await this.service.topic.getTopicsByQuery(query, options);
+    console.log(topics, 99);
     // 取排行榜上的用户
     let tops = await this.service.cache.get('tops');
     if (!tops) {
