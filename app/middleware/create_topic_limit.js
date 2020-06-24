@@ -2,7 +2,7 @@
 
 const moment = require('moment');
 
-module.exports = ({ perDayPerUserLimitCount = 10 }) => {
+module.exports = ({ perDayPerUserLimitCount = 5 }) => {
 
   return async function createTopicLimit(ctx, next) {
     const { user, service } = ctx;

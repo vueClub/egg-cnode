@@ -42,7 +42,6 @@ class HomeController extends Controller {
     };
 
     const topics = await this.service.topic.getTopicsByQuery(query, options);
-    console.log(topics, 99);
     // 取排行榜上的用户
     let tops = await this.service.cache.get('tops');
     if (!tops) {
@@ -111,7 +110,7 @@ class HomeController extends Controller {
     if (!sitemapData) {
       const topics = await this.service.topic.getLimit5w();
       topics.forEach(topic => {
-        urlset.ele('url').ele('loc', 'http://cnodejs.org/topic/' + topic._id);
+        urlset.ele('url').ele('loc', 'https://vue-js.com/topic/' + topic._id);
       });
       sitemapData = urlset.end();
       // 缓存一天

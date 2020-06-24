@@ -44,10 +44,10 @@ module.exports = appInfo => {
 
   // RSS配置
   config.rss = {
-    title: 'CNode：Node.js专业中文社区',
-    link: 'http://cnodejs.org',
+    title: 'Vue：Vue.js专业中文社区',
+    link: 'http://vue-js.com',
     language: 'zh-cn',
-    description: 'CNode：Node.js专业中文社区',
+    description: 'Vue：Vue.js专业中文社区',
     // 最多获取的RSS Item数量
     max_rss_items: 50,
   };
@@ -94,6 +94,7 @@ module.exports = appInfo => {
   config.admins = {
     ADMIN_USER: true,
     ab8512: true,
+    febobo: true,
   };
 
   config.siteFile = {
@@ -113,8 +114,10 @@ module.exports = appInfo => {
   /**
    * @see http://mongodb.github.io/node-mongodb-native/2.2/api/Db.html#createCollection
    */
+  console.log(process.env.EGG_MONGODB_URL);
+  // mongodb://vue_club_dev:vue_club_dev@mongodb:27017/vue_club_dev
   config.mongoose = {
-    url: process.env.EGG_MONGODB_URL || 'mongodb://127.0.0.1:27017/vue_club_dev',
+    url: process.env.EGG_MONGODB_URL || 'mongodb://vue_club_dev:vue_club_dev@127.0.0.1:27017/vue_club_dev',
     options: {
       server: { poolSize: 20 },
       reconnectTries: 10,
@@ -124,8 +127,8 @@ module.exports = appInfo => {
 
   // passport
   config.passportGithub = {
-    key: process.env.EGG_PASSPORT_GITHUB_CLIENT_ID || 'test',
-    secret: process.env.EGG_PASSPORT_GITHUB_CLIENT_SECRET || 'test',
+    key: process.env.EGG_PASSPORT_GITHUB_CLIENT_ID || '981a5e0bb7aaa4b76443',
+    secret: process.env.EGG_PASSPORT_GITHUB_CLIENT_SECRET || '55d43c59a806d35bf9f055b39725d85c19c9779d',
   };
 
   config.passportLocal = {
@@ -145,8 +148,8 @@ module.exports = appInfo => {
 
   config.alinode = {
     // 从 `Node.js 性能平台` 获取对应的接入参数
-    appid: process.env.EGG_ALINODE_APPID || '',
-    secret: process.env.EGG_ALINODE_SECRET || '',
+    appid: process.env.EGG_ALINODE_APPID || '85328',
+    secret: process.env.EGG_ALINODE_SECRET || '17b232b05a5162b8e8e5ad3dee076f5af7a59887',
   };
 
   config.topic = {

@@ -6,6 +6,7 @@ services:
     #   dockerfile: Dockerfile
     #   args:
     #     - env=value
+    #     - p=7001:7001
     image: cnode/egg-cnode:latest
     environment:
       - NODE_ENV=production
@@ -14,13 +15,17 @@ services:
       - EGG_REDIS_HOST=redis
       - EGG_REDIS_PORT=6379
       - EGG_REDIS_PASSWORD=egg_cnode
-      - EGG_MONGODB_URL=mongodb://egg_cnode:egg_cnode@mongodb:27017/egg_cnode
+      - MONGO_INITDB_ROOT_USERNAME=vue_club_dev
+      - MONGO_INITDB_ROOT_PASSWORD=vue_club_dev
+      - MONGO_INITDB_DATABASE=vue_club_dev
+      - EGG_REDIS_PASSWORD=vue_club_dev
+      - EGG_MONGODB_URL=mongodb://vue_club_dev:vue_club_dev@mongodb:27017/vue_club_dev
       - EGG_MINI_ASSETS=true
-      - EGG_PASSPORT_GITHUB_CLIENT_ID=test
-      - EGG_PASSPORT_GITHUB_CLIENT_SECRET=test
+      - EGG_PASSPORT_GITHUB_CLIENT_ID=981a5e0bb7aaa4b76443
+      - EGG_PASSPORT_GITHUB_CLIENT_SECRET=55d43c59a806d35bf9f055b39725d85c19c9779d
       # - EGG_SITE_STATIC_HOST=${EGG_SITE_STATIC_HOST}
-      - EGG_ALINODE_APPID=appid
-      - EGG_ALINODE_SECRET=secret
+      - EGG_ALINODE_APPID=85328
+      - EGG_ALINODE_SECRET=17b232b05a5162b8e8e5ad3dee076f5af7a59887
     depends_on:
       - redis
       - mongodb
@@ -31,7 +36,7 @@ services:
 
   redis:
     image: redis:3.2-alpine
-    command: redis-server --appendonly yes --requirepass egg_cnode
+    command: redis-server 
     volumes:
       - egg-redis:/data
     networks:
@@ -43,11 +48,11 @@ services:
     image: mongo:3.2
     restart: always
     environment:      
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=mongodb
-      - MONGO_INITDB_DATABASE=egg_cnode
+      - MONGO_INITDB_ROOT_USERNAME=vue_club_dev
+      - MONGO_INITDB_ROOT_PASSWORD=vue_club_dev
+      - MONGO_INITDB_DATABASE=vue_club_dev
     volumes:
-      - egg-mongo:/data/db
+      - ./data:/data/db
       - ./init.d/mongo:/docker-entrypoint-initdb.d
     networks:
       - docker_cnode
@@ -55,7 +60,7 @@ services:
     #   - 27017:27017
 
 volumes:
-  egg-mongo:
+  # egg-mongo:
   egg-redis:
 
 networks:

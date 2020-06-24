@@ -45,7 +45,7 @@
     "node": ">=8.9.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-cnode",
+    "start": "egg-scripts start --daemon --title=egg-server-cnode --ignore-stderr",
     "stop": "egg-scripts stop --title=egg-server-cnode",
     "restart": "npm run stop && npm run start",
     "docker": "egg-scripts start --title=egg-server-cnode",

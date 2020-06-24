@@ -22,9 +22,10 @@ input[type="color"],
 }
 
 pre {
-    background: #fee9cc;
-    border: 1px dashed #ccc;
+    background: #000;
+    /* border: 1px dashed #ccc; */
     line-height: 22px;
+    color: #fff;
 }
 
 code {

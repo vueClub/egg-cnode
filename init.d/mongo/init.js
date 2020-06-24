@@ -5,16 +5,16 @@
  * 2. create collection (Before MongoDB can save your new database, a collection name must also be specified at the time of creation.)
  */
 db.createUser({
-  user: 'egg_cnode',
-  pwd: 'egg_cnode',
+  user: 'vue_club_dev',
+  pwd: 'vue_club_dev',
   roles: [
     {
       role: 'readWrite',
-      db: 'egg_cnode'
+      db: 'vue_club_dev'
     }
   ]
 })
 
-db.egg_cnode.insert({
-  egg_cnode: 'egg-cnode'
+db.vue_club_dev.insert({
+  vue_club_dev: 'vue_club_dev'
 })

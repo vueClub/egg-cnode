@@ -2,7 +2,7 @@ version: '3'
 services:
   redis:
     image: redis:3.2-alpine
-    command: redis-server --appendonly yes --requirepass egg_cnode
+    command: redis-server
     volumes:
       - egg-redis:/data
     networks:
@@ -14,11 +14,13 @@ services:
     image: mongo:3.2
     restart: always
     environment:      
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=mongodb
-      - MONGO_INITDB_DATABASE=egg_cnode
+      - MONGO_INITDB_ROOT_USERNAME=vue_club_dev
+      - MONGO_INITDB_ROOT_PASSWORD=vue_club_dev
+      - MONGO_INITDB_DATABASE=vue_club_dev
+      - EGG_REDIS_PASSWORD=vue_club_dev
+      - EGG_MONGODB_URL=mongodb://vue_club_dev:vue_club_dev@mongodb:27017/vue_club_dev
     volumes:
-      - egg-mongo:/data/db
+      - ./data:/data/db
       - ./init.d/mongo/:/docker-entrypoint-initdb.d/
     networks:
       - docker_cnode
@@ -26,7 +28,6 @@ services:
       - 27017:27017
 
 volumes:
-  egg-mongo:
   egg-redis:
 
 networks:
