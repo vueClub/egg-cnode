@@ -14,7 +14,7 @@ module.exports = appInfo => {
   config.site_icon = '/public/images/vue.png';
 
   // debug 为 true 时，用于本地调试
-  config.debug = true;
+  config.debug = false;
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1519887194138_3450';
@@ -37,7 +37,7 @@ module.exports = appInfo => {
   // cdn host，如 http://cnodejs.qiniudn.com
   config.site_static_host = process.env.EGG_SITE_STATIC_HOST || ''; // 静态文件存储域名
 
-  config.mini_assets = process.env.EGG_MINI_ASSETS || false;
+  config.mini_assets = process.env.EGG_MINI_ASSETS || true;
 
   // 版块
   config.tabs = [[ 'share', '分享' ], [ 'ask', '问答' ], [ 'job', '招聘' ]];
@@ -59,7 +59,7 @@ module.exports = appInfo => {
     accessKey: 'K1EzvixYD2GbvvsiX3ko6g989GuVMUZkyrCdUl5o',
     secretKey: 'ggoFiqnCsE_Un4XpKPRqYQJyke8_Yo6kApm2bcsh',
     bucket: 'vueclub',
-    domain: 'https://static.vue-js.com',
+    origin: 'https://static.vue-js.com',
   };
 
   // 文件上传配置

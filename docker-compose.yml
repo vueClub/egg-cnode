@@ -1,16 +1,17 @@
 version: '3'
 services: 
   cnode:
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    #   args:
-    #     - env=value
-    #     - p=7001:7001
-    image: cnode/egg-cnode:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - env=value
+        - p=7001:7001
+        - p=27017:27017
+    # image: registry.cn-beijing.aliyuncs.com/vue_club/vue_egg:v1.1.2
     environment:
-      - NODE_ENV=production
-      - EGG_SERVER_ENV=prod
+      # - NODE_ENV=production
+      # - EGG_SERVER_ENV=prod
       - EGG_REDIS_DB=0
       - EGG_REDIS_HOST=redis
       - EGG_REDIS_PORT=6379
@@ -23,7 +24,7 @@ services:
       - EGG_MINI_ASSETS=true
       - EGG_PASSPORT_GITHUB_CLIENT_ID=981a5e0bb7aaa4b76443
       - EGG_PASSPORT_GITHUB_CLIENT_SECRET=55d43c59a806d35bf9f055b39725d85c19c9779d
-      # - EGG_SITE_STATIC_HOST=${EGG_SITE_STATIC_HOST}
+      # - EGG_SITE_STATIC_HOST=https://static.vue-js.com
       - EGG_ALINODE_APPID=85328
       - EGG_ALINODE_SECRET=17b232b05a5162b8e8e5ad3dee076f5af7a59887
     depends_on:
@@ -33,6 +34,7 @@ services:
       - docker_cnode
     ports:
       - 7001:7001
+      # - 27017:27017
 
   redis:
     image: redis:3.2-alpine
@@ -56,8 +58,8 @@ services:
       - ./init.d/mongo:/docker-entrypoint-initdb.d
     networks:
       - docker_cnode
-    # ports:
-    #   - 27017:27017
+    ports:
+      - 27017:27017
 
 volumes:
   # egg-mongo:
