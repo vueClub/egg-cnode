@@ -40,6 +40,7 @@ module.exports = app => {
   };
 
   const githubHandler = async (ctx, { profile }) => {
+    console.log(2233);
     const email = profile.emails && profile.emails[0] && profile.emails[0].value;
     let existUser = await ctx.service.user.getUserByGithubId(profile.id);
 
@@ -64,13 +65,13 @@ module.exports = app => {
       if (ex.message.indexOf('duplicate key error') !== -1) {
         let err;
         if (ex.message.indexOf('email') !== -1) {
-          err = new Error('您 GitHub 账号的 Email 与之前在 CNodejs 注册的 Email 重复了');
+          err = new Error('您 GitHub 账号的 Email 与之前在 Vue社区 注册的 Email 重复了');
           err.code = 'duplicate_email';
           throw err;
         }
 
         if (ex.message.indexOf('loginname') !== -1) {
-          err = new Error('您 GitHub 账号的用户名与之前在 CNodejs 注册的用户名重复了');
+          err = new Error('您 GitHub 账号的用户名与之前在 Vue社区 注册的用户名重复了');
           err.code = 'duplicate_loginname';
           throw err;
         }

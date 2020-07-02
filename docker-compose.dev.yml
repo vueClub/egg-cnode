@@ -20,7 +20,7 @@ services:
       - EGG_REDIS_PASSWORD=vue_club_dev
       - EGG_MONGODB_URL=mongodb://vue_club_dev:vue_club_dev@mongodb:27017/vue_club_dev
     volumes:
-      - ./data:/data/db
+      - ~/Documents/ali/data:/data/db
       - ./init.d/mongo/:/docker-entrypoint-initdb.d/
     networks:
       - docker_cnode
