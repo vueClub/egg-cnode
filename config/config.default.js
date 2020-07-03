@@ -114,7 +114,7 @@ module.exports = appInfo => {
   /**
    * @see http://mongodb.github.io/node-mongodb-native/2.2/api/Db.html#createCollection
    */
-  console.log(process.env.EGG_MONGODB_URL);
+  // console.log(process.env.EGG_MONGODB_URL);
   // mongodb://vue_club_dev:vue_club_dev@mongodb:27017/vue_club_dev
   config.mongoose = {
     url: process.env.EGG_MONGODB_URL || 'mongodb://vue_club_dev:vue_club_dev@127.0.0.1:27017/vue_club_dev',
@@ -129,6 +129,8 @@ module.exports = appInfo => {
   config.passportGithub = {
     key: process.env.EGG_PASSPORT_GITHUB_CLIENT_ID || '981a5e0bb7aaa4b76443',
     secret: process.env.EGG_PASSPORT_GITHUB_CLIENT_SECRET || '55d43c59a806d35bf9f055b39725d85c19c9779d',
+    callbackURL: 'https://vue-js.com/passport/github/callback',
+    proxy: true,
   };
 
   config.passportLocal = {

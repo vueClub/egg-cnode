@@ -35,6 +35,7 @@ module.exports = app => {
   const localStrategy = app.passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/signin',
+    callbackURL: 'http://vue-js.com/passport/github/callback',
   });
 
   router.get('/signin', sign.showLogin); // 进入登录页面
@@ -43,7 +44,14 @@ module.exports = app => {
   router.get('/active_account', sign.activeAccount); // 帐号激活
 
   // github oauth
-  app.passport.mount('github');
+  const github = app.passport.authenticate('github', {
+    successRedirect: '/',
+    failureRedirect: '/signin',
+    callbackURL: 'https://vue-js.com/passport/github/callback',
+  });
+  router.get('/passport/github', github);
+  router.get('/passport/github/callback', github);
+  // app.passport.mount('github');
 
   router.get('/search_pass', sign.showSearchPass); // 找回密码页面
   router.post('/search_pass', sign.updateSearchPass); // 更新密码
